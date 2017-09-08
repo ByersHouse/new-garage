@@ -90,7 +90,7 @@ class Router {
                 $params = array_reverse($params);
 
                 if ((!(isset($router[$uri]['params']))) && (!empty($params)) || isset($router[$uri]['params']) && empty($params)) {
-                    echo 'что-то не так';
+                   // echo 'что-то не так';
                     break;
                 }
                 if ($this->createController($uri, $router, $params)) {
@@ -118,7 +118,7 @@ class Router {
 
                 $query = [];
 
-                foreach ($_GET as $key => $val)
+                foreach ($_GET as $key => &$val)
                 {
                     $val = trim($val);
                     $val = stripslashes($val);
@@ -149,7 +149,7 @@ class Router {
         $post = [];
         if(!(empty($_POST))){
 
-            foreach ($_POST as $key => $val)
+            foreach ($_POST as $key => &$val)
 
             {
                 $val = trim($val);

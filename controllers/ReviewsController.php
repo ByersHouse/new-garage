@@ -23,6 +23,7 @@ class ReviewsController extends Controller{
         include_once ROOT . '/template/libs/captcha/simple-php-captcha.php';
         $_SESSION['captcha'] = (simple_php_captcha());
 
+
         Page::render('reviews', ['reviews' => $review, 'pagination' => $pagination]);
     }
 

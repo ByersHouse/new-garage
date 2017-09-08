@@ -23,7 +23,7 @@ Class Page
      *
      */
     static function get404(){
-        echo '404';
+        self::render('404');
         die;
     }
 

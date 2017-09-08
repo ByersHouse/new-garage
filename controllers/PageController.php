@@ -11,6 +11,18 @@ class PageController extends Controller {
         $alias = $alias[0];
 
         $page = $this->model->getPage($alias);
+
+
+        if ($page && $alias == 'contacts'){
+
+            $map = $this->model->getMap();
+            Storage::set('map', $map);
+
+            Page::render('index', ['page' => $page]);
+            return true;
+
+
+        }
         if($page) {
 
             Page::render('index', ['page' => $page]);

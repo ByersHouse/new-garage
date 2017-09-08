@@ -24,7 +24,7 @@
 
                         <?php } ?>
                     <?php } ?>
-                    <span class="chooseAnother"><a href='/last/#cart'>Выбрать другой пакет</a></span>
+                    <span class="chooseAnother"><a href='/'>Выбрать другой пакет</a></span>
                 </div>
                 <div class="cartContentCard">
                     <img src="img/newcarta.png" />
@@ -125,7 +125,7 @@
 <div class="agreement">
     <div class="container">
         <input type="checkbox" name="agree" class="agreeCheck" id="agreed" />
-        <span>Я подтверждаю заказ и согласен с условиями <a href="/last/oferta" target="_blank">Публичной оферты</a></span>
+        <span>Я подтверждаю заказ и согласен с условиями <a href="/page/offer" target="_blank">Публичной оферты</a></span>
     </div>
 </div>
 

@@ -9,16 +9,7 @@
     <link rel="icon" href="/template/img/fa.png" />
     <link rel="apple-touch-icon" href="/template/img/fa.png">
     <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="/template/css/normalize.css">
-    <link rel="stylesheet" href="/template/css/main.css">
-    <link rel="stylesheet" href="/template/css/fonts.css">
-    <link rel="stylesheet" href="/template/css/responsive.css">
-    <link rel="stylesheet" href="/template/libs/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/template/libs/modal/jquery.modal.css">
-    <link rel="stylesheet" type="text/css" href="/template/libs/tooltipster/css/tooltipster.bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="/template/libs/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css" />
-    <script src="/template/js/vendor/modernizr-2.8.3.min.js"></script>
+<?= Config::loadCss() ?>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -93,7 +84,12 @@
             <a href="/cart/order" class="header__cartLink">
                 <i class="icon icon--cart"></i>
                 <span class="cartdivider"></span>
-                <span class="cartcount"><?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {  echo  count($_SESSION['cart']); ?><?php } else { ?>0<?php } ?></span>
+                <span class="cartcount">
+                    <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                             <?= count($_SESSION['cart']); ?>
+                    <?php else:  ?>0
+                    <?php endif; ?>
+                </span>
                 <span class="hiddenText">Оформить заказ</span>
             </a>
         </div>

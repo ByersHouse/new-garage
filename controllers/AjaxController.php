@@ -8,6 +8,7 @@ Class AjaxController extends Controller {
      $this->model = new Ajax();
 
      $this->model->Ajax();
+     return;
 
     }
 

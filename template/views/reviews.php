@@ -73,8 +73,7 @@
                     <div class="ccCap ccuCLRe">
                         <span class="errorSpanClass2 esc3">Это поле обязательное</span>
                         <input class="capInput" type="text" id="r_captcha" />
-                        <?  echo '<pre>'; print_r($_SESSION['captcha']['code']); echo '</pre>'; ?>
-                        <?php echo '<img src="' . $_SESSION['captcha']['image_src'] . '" alt="CAPTCHA" />'; ?>
+                        <?='<img src="' . $_SESSION['captcha']['image_src'] . '" alt="CAPTCHA" />'; ?>
                     </div>
                 </div>
 

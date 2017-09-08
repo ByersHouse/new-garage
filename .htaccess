@@ -6,5 +6,8 @@ RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+ Order Allow,Deny
+ Deny from all
+ </FilesMatch>
 RewriteRule ^(.*)$ index.php

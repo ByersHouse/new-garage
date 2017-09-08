@@ -1,15 +1,6 @@
 <?php
 class Config {
-    static $css = 'template/css';
-    static $js =  'template/js';
-    static $cssCDN = [
-        'https://fonts.googleapis.com/css?family=Marmelad',
-        'https://fonts.googleapis.com/icon?family=Material+Icons',
 
-    ];
-    static $jsCDN = [
-        'https://code.jquery.com/jquery-3.2.1.min.js',
-    ];
 
     /**
      * @return array
@@ -29,7 +20,9 @@ class Config {
 
             'postdata/ajax' => ['controller' => 'Ajax', 'action' => 'PostData', 'method' => 'post'],
 
-            'cart/order' => ['controller' => 'Cart', 'action' => 'ViewCart', 'method' => 'post'],
+            'cart/order' => ['controller' => 'Cart', 'action' => 'ViewCart', 'method' => 'get'],
+
+            'login' => ['controller' => 'Login', 'action' => 'Auth', 'method' => 'get'],
 
             ],
 
@@ -89,26 +82,18 @@ class Config {
      */
     static function loadCss()
         {
-            $cssDirectory = self::$css;
-            $allowed_types = ['css'];
-            $handle = @opendir($cssDirectory);
-            $result = '';
 
+            $result = '
+    <link rel="stylesheet" href="/template/css/normalize.css">
+    <link rel="stylesheet" href="/template/css/main.css">
+    <link rel="stylesheet" href="/template/css/fonts.css">
+    <link rel="stylesheet" href="/template/css/responsive.css">
+    <link rel="stylesheet" href="/template/libs/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/template/libs/modal/jquery.modal.css">
+    <link rel="stylesheet" type="text/css" href="/template/libs/tooltipster/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="/template/libs/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css" />
+    <script src="/template/js/vendor/modernizr-2.8.3.min.js"></script>';
 
-            while (false !== ($file = readdir($handle))) {
-
-                $file_parts = explode('.', $file);
-                $css = strtolower(array_pop($file_parts));
-
-                if (in_array($css, $allowed_types)) {
-
-                    $result .= '<link rel="stylesheet" href="/' . $cssDirectory . '/' . $file . '"/>'. PHP_EOL;
-                }
-            }
-            foreach (self::$cssCDN as $href){
-                $result .= '<link rel="stylesheet" href="' . $href . '"/>' . PHP_EOL;
-
-            }
             return $result;
         }
 
@@ -117,29 +102,21 @@ class Config {
      */
     static function loadJs()
     {
-        $result = '';
+        $map = '';
+        @Storage::set('map', $map);
+        $result = ' <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+                    <script src="/template/js/jquery.mobile.custom.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+                    <script>window.jQuery || document.write(\'<script src="/template/js/vendor/jquery-1.12.0.min.js"><\/script>\')</script>
+                    <script src="/template/js/plugins.js"></script>
+                    <script src="/template/js/main.js"></script>
+                    <script src="/template/js/calc.js"></script>
+                    <script src="/template/js/lg.js"></script>
+                    <script src="/template/libs/counterup/jquery.counterup.min.js"></script>
+                    <script src="/template/libs/modal/jquery.modal.js"></script>
+                    <script type="text/javascript" src="/template/libs/tooltipster/js/tooltipster.bundle.min.js"></script>
+                    <script type="text/javascript" src="/template/js/footerJS.js"></script>';
 
-        foreach (self::$jsCDN as $href){
-            $result .= '<script src="' . $href . '"></script>' . PHP_EOL;
-
-        }
-
-        $jsDirectory = self::$js;
-        $allowed_types = ['js'];
-        $handle = @opendir($jsDirectory);
-
-
-
-        while (false !== ($file = readdir($handle))) {
-
-            $file_parts = explode('.', $file);
-            $js = strtolower(array_pop($file_parts));
-
-            if (in_array($js, $allowed_types)) {
-
-                $result .= '<script src="/' . $jsDirectory . '/' . $file . '"></script>'. PHP_EOL;
-            }
-        }
 
         return $result;
     }

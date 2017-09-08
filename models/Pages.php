@@ -21,5 +21,12 @@ class Pages extends Model {
 
     }
 
+    public function getMap(){
+
+        $map = "<script src='/template/js/gmap.js' ></script> 
+                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDjbsUuGG3Z5_bnQ1k6XAFlbrfE-rqFQjQ&callback=initMap&language=ru' async defer></script>";
+        return $map;
+    }
+
 
 }

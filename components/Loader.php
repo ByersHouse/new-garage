@@ -9,6 +9,7 @@ function Loader($class_name)
         '/components/',
         '/components/lib/',
         '/components/mailer/',
+        '/components/users/',
         '/controllers/',
     ];
 
