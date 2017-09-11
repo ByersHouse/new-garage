@@ -30,44 +30,23 @@ class Reviews extends Model
         $month = $r2[1];
         $day = $r2[2];
 
-        switch ($month) {
-            case '01':
-                $textm = 'января';
-                break;
-            case '02':
-                $textm = 'февраля';
-                break;
-            case '03':
-                $textm = 'марта';
-                break;
-            case '04':
-                $textm = 'апреля';
-                break;
-            case '05':
-                $textm = 'мая';
-                break;
-            case '06':
-                $textm = 'июня';
-                break;
-            case '07':
-                $textm = 'июля';
-                break;
-            case '08':
-                $textm = 'августа';
-                break;
-            case '09':
-                $textm = 'сентября';
-                break;
-            case '10':
-                $textm = 'октября';
-                break;
-            case '11':
-                $textm = 'ноября';
-                break;
-            case '12':
-                $textm = 'декабря';
-                break;
-        }
+
+        $array = [
+          '01' => 'января',
+          '02' => 'февраля',
+          '03' => 'марта',
+          '04' => 'апреля',
+          '05' => 'мая',
+          '06' => 'июня',
+          '07' => 'июля',
+          '08' => 'августа',
+          '09' => 'сентября',
+          '10' => 'октября',
+          '11' => 'ноября',
+          '12' => 'декабря',
+        ];
+
+        $textm = $array[$month];
         return $day . ' ' . $textm . ' ' . $year;
     }
 

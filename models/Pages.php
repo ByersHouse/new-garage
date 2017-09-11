@@ -16,6 +16,7 @@ class Pages extends Model {
         $db = $this->db;
         $page = $db->prepare('SELECT code FROM '.$this->table . ' WHERE alias = ?');
         $page->execute([$alias]);
+
         $page = $page->fetch();
         return $page;
 

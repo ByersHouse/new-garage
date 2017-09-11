@@ -24,6 +24,8 @@ class Config {
 
             'login' => ['controller' => 'Login', 'action' => 'Auth', 'method' => 'get'],
 
+            'login/enter' => ['controller' => 'Auth', 'action' => 'Enter', 'method' => 'post'],
+
             ],
 
             'AdminRoutes' => [
